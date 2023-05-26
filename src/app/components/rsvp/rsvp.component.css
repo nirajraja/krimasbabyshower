@@ -1,0 +1,14 @@
+.bg-img {
+    /* The image used */
+    background-image: url("../../../assets/background.jpg");
+  
+    /* Control the height of the image */
+    height: 100%;
+    display: block;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
