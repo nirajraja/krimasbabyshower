@@ -1,15 +1,16 @@
 .bg-img {
-    /* The image used */
-    background-image: url("../../../assets/background.jpg");
-    /* background-image: url("../../../assets/oh-baby-500X500.jpeg"); */
-  
-    /* Control the height of the image */
-    height: 100%;
-    display: block;
-  
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    position: relative;
-  }
+  /* The image used */
+  /* background-image: url("../../../assets/background.jpg"); */
+  background-image: url("../../../assets/baby-giraffe.jpg");
+  /* background-image: url("../../../assets/oh-baby-500X500.jpeg"); */
+
+  /* Control the height of the image */
+  height: 98%;
+  display: block;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+}
