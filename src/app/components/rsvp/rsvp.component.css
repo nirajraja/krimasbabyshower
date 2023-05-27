@@ -1,16 +1,64 @@
 .bg-img {
   /* The image used */
   /* background-image: url("../../../assets/background.jpg"); */
-  background-image: url("../../../assets/baby-giraffe.jpg");
+  background-image: url("../../../assets/baby-hat-composed-with-marshmallows.jpg");
   /* background-image: url("../../../assets/oh-baby-500X500.jpeg"); */
 
   /* Control the height of the image */
   height: 98%;
+  width: 96%;
   display: block;
 
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  position: relative;
+  position: absolute;
+  text-align: center;
+}
+
+.container {
+  z-index: 1000;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 100%
+}
+
+.outer-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.inner-container {
+  text-align: center;
+  width: 100%;
+}
+
+.display-grid {
+  display: grid;
+}
+
+.font-family-cursive {
+  font-family: cursive;
+  font-size: 18px;
+  color: sienna;
+  font-weight: bold;
+}
+
+.baby-shower-font {
+  font: 45px Brush Script MT;
+  color: deeppink;
+}
+
+.common-margin {
+  margin: 30px;
+}
+
+.name-font-style {
+  font: 35px Bradley Hand, cursive;
+  color: deeppink;
 }
