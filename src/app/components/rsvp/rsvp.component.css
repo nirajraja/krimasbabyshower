@@ -1,12 +1,12 @@
 .bg-img {
   /* The image used */
   /* background-image: url("../../../assets/background.jpg"); */
-  background-image: url("../../../assets/baby-hat-composed-with-marshmallows.jpg");
+  background-image: url("../../../assets/hand-drawn-blue-rose-frame-illustration.jpg");
   /* background-image: url("../../../assets/oh-baby-500X500.jpeg"); */
 
   /* Control the height of the image */
-  height: 98%;
-  width: 96%;
+  height: 100%;
+  width: 100%;
   display: block;
 
   /* Center and scale the image nicely */
@@ -55,7 +55,7 @@
 }
 
 .common-margin {
-  margin: 30px;
+  margin: 20px;
 }
 
 .name-font-style {
