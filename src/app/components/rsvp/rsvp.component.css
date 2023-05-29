@@ -42,16 +42,17 @@
   display: grid;
 }
 
-.font-family-cursive {
-  font-family: cursive;
+.font-family-common {
+  font-family: Roboto;
   font-size: 18px;
   color: sienna;
   font-weight: bold;
 }
 
 .baby-shower-font {
-  font: 45px Brush Script MT;
+  font: 45px Tangerine;
   color: deeppink;
+  font-weight: bold;
 }
 
 .common-margin {
@@ -59,6 +60,7 @@
 }
 
 .name-font-style {
-  font: 35px Bradley Hand, cursive;
+  font: 45px Tangerine;
   color: deeppink;
+  font-weight: bold;
 }
