@@ -13,8 +13,8 @@ export class RsvpComponent {
 
   openRsvpDialog() {
     let dialogRef = this.dialog.open(RsvpFormComponent, {
-      height: '800px',
-      width: '500px',
+      height: '550px',
+      width: '250px',
     });
   }
 }
