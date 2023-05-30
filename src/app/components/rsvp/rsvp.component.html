@@ -36,11 +36,12 @@
                     <span>Friday, August 25th, 2023</span>
                 </div>
                 <div>
-                    <button mat-raised-button color="accent" (click)="openRsvpDialog()">RSVP</button>
+                    <button [disabled]="disableRsvp" mat-raised-button color="accent" (click)="openRsvpDialog()" >RSVP</button>
+                    <!-- <button *ngIf="disableRsvp" mat-raised-button color="accent" (click)="openRsvpDialog()">RSVP</button> -->
                 </div>
             </div>
         </div>
-        <!-- <div>
+        <!-- <div>disableRsvp
         Image by <a
             href="https://www.freepik.com/free-photo/top-view-beautiful-baby-shower-concept_10855373.htm#query=baby%20shower%20background&position=39&from_view=keyword&track=ais">Freepik</a>
     </div> -->
