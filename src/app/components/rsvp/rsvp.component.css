@@ -64,3 +64,10 @@
   color: deeppink;
   font-weight: bold;
 }
+
+.post-confirmation-message {
+  font-family: Roboto;
+  font-size: 18px;
+  color: rgb(2, 252, 35);
+  font-weight: bold;
+}

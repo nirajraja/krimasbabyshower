@@ -31,13 +31,19 @@
                     <span class="font-family-common">12, Main St</span>
                     <span class="font-family-common">Leesburg, VA 20176</span>
                 </div>
-                <div class="display-grid font-family-common common-margin">
+                <div *ngIf="hideRsvpButtonForExternalRegion" class="display-grid font-family-common common-margin">
                     <span>RSVP By</span>
                     <span>Friday, August 25th, 2023</span>
                 </div>
-                <div>
-                    <button [disabled]="disableRsvp" mat-raised-button color="accent" (click)="openRsvpDialog()" >RSVP</button>
+                <div *ngIf="hideRsvpButtonForExternalRegion">
+                    <button *ngIf="!disableRsvp" mat-raised-button color="accent"
+                        (click)="openRsvpDialog()">RSVP</button>
                     <!-- <button *ngIf="disableRsvp" mat-raised-button color="accent" (click)="openRsvpDialog()">RSVP</button> -->
+                </div>
+                <div class="display-grid" *ngIf="hideRsvpButtonForExternalRegion">
+                    <span *ngIf="disableRsvp" class="post-confirmation-message">Thank you for confirming</span>
+                    <span *ngIf="disableRsvp" class="post-confirmation-message">your
+                        RSVP.</span>
                 </div>
             </div>
         </div>

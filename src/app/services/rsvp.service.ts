@@ -7,16 +7,18 @@ import { RsvpInfo } from '../components/rsvp/rsvp-form/rsvp-form.component';
   providedIn: 'root'
 })
 export class RsvpService {
-@Output()
-disableRsvpButttonEvent: EventEmitter<any> = new EventEmitter();
+  @Output()
+  disableRsvpButttonEvent: EventEmitter<any> = new EventEmitter();
 
-  constructor(private http:HttpClientModule) { }
+  constructor(private http: HttpClientModule) { }
 
-  postRsvp(info:RsvpInfo){
+  postRsvp(info: RsvpInfo) {
     return of('Success');
   }
 
   disableRSVPbutton() {
-    this.disableRsvpButttonEvent.next({data: true});
+
+    console.log('RsvpService disableRSVPbutton n: ', true);
+    this.disableRsvpButttonEvent.next({ data: true });
   }
 }
