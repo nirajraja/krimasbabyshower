@@ -14,7 +14,7 @@ export interface RsvpInfo {
   firstName: string | null | undefined;
   lastName: string | null | undefined;
   phone: string | null | undefined;
-  attendeeCount: string | null | undefined;
+  guestCount: string | null | undefined;
   timezone: string | null | undefined;
   locationContinent: string | null | undefined;
   includeRsvpInCountList: boolean | null | undefined;
@@ -39,11 +39,11 @@ export class RsvpFormComponent {
   { value: '4', label: '4' }, { value: '5', label: '5' }, { value: '6', label: '6' }, { value: '7', label: '7' },
   { value: '8', label: '8' }, { value: '9', label: '9' }, { value: '10', label: '10' }];
 
-  allowedRsvpRegion:string[]=['AMERICA'];
+  allowedRsvpRegion: string[] = ['AMERICA'];
 
-  constructor(public dialog: MatDialog, private rsvpServce:RsvpService) { }
+  constructor(public dialog: MatDialog, private rsvpServce: RsvpService) { }
 
-  submitRsvp() { 
+  submitRsvp() {
     this.contactForm.markAllAsTouched();
     console.log('RsvpFormComponent this.contactForm.pristine: ', this.contactForm.pristine);
     if (this.contactForm.invalid) {
@@ -54,28 +54,28 @@ export class RsvpFormComponent {
         next: (data) => {
           console.log('RsvpFormComponent rsvp success', data);
           this.rsvpServce.disableRSVPbutton();
-          if(data=='Success'){
+          if (data['status'] == 'Saved') {
             this.dialog.closeAll();
           }
         },
-        error: (e) => {console.error('RsvpFormComponent rsvp error',e)},
+        error: (e) => { console.error('RsvpFormComponent rsvp error', e) },
       })
     }
   }
 
   getRsvpInfo() {
-    let timezone:string = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    let timezone: string = Intl.DateTimeFormat().resolvedOptions().timeZone;
     console.log('RsvpFormComponent rsvp timezone: ', timezone);
-    let continent:string = timezone.split('/')[0];
+    let continent: string = timezone.split('/')[0];
     console.log('RsvpFormComponent rsvp timezone: ', continent);
     let rsvp: RsvpInfo = {
       firstName: this.contactForm.get('firstname')?.value,
       lastName: this.contactForm.get('lastname')?.value,
       phone: this.contactForm.get('phoneNumber')?.value,
-      attendeeCount: this.contactForm.get('peopleCount')?.value,
-      locationContinent:continent,
-      includeRsvpInCountList:this.allowedRsvpRegion.includes(continent.toUpperCase())?true:false,
-      timezone:timezone
+      guestCount: this.contactForm.get('peopleCount')?.value,
+      locationContinent: continent,
+      includeRsvpInCountList: this.allowedRsvpRegion.includes(continent.toUpperCase()) ? true : false,
+      timezone: timezone
     }
     return rsvp;
   }

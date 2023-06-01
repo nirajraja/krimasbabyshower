@@ -59,12 +59,16 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "proxyConfig": "src/proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "browserTarget": "heroku-npate-test-appui:build:production"
             },
             "development": {
-              "browserTarget": "heroku-npate-test-appui:build:development"
+              "browserTarget": "heroku-npate-test-appui:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
