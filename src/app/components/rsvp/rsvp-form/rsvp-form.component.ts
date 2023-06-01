@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import * as moment from 'moment';
 import { RsvpService } from 'src/app/services/rsvp.service';
 
 interface DdValue {

@@ -1,0 +1,7 @@
+{
+    "/api": {
+        "target": "https://npate-heroku-ui-service.herokuapp.com",
+        "secure": false,
+        "changeOrigin": true
+    }
+}
