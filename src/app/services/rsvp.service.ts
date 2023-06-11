@@ -11,6 +11,7 @@ export class RsvpService {
   disableRsvpButttonEvent: EventEmitter<any> = new EventEmitter();
 
   serviceUrl: string = 'https://npate-heroku-ui-service.herokuapp.com/api/v1/';
+  //serviceUrl: string = '/api/v1/';
   constructor(private http: HttpClient) { }
 
   postRsvp(info: RsvpInfo) {

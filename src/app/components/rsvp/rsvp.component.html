@@ -27,20 +27,23 @@
                 <span class="font-family-cursive">11:00 AM - 2:00 PM</span>
             </div> -->
                 <div class="display-grid  common-margin">
-                    <span class="font-family-common">Some Venue</span>
-                    <span class="font-family-common">12, Main St</span>
-                    <span class="font-family-common">Leesburg, VA 20176</span>
+                    <a href="https://goo.gl/maps/mcT8k1AVjW3ZrdBb7" target="blank" class="font-family-common">Ida Lee
+                        Park </a>
+                    <a href="https://goo.gl/maps/mcT8k1AVjW3ZrdBb7" target="blank" class="font-family-common">60 Ida Lee
+                        Dr NW</a>
+                    <a href="https://goo.gl/maps/mcT8k1AVjW3ZrdBb7" target="blank" class="font-family-common">Leesburg,
+                        VA 20176</a>
                 </div>
-                <div *ngIf="hideRsvpButtonForExternalRegion" class="display-grid font-family-common common-margin">
+                <div class="display-grid font-family-common common-margin">
                     <span>RSVP By</span>
                     <span>Friday, August 25th, 2023</span>
                 </div>
-                <div *ngIf="hideRsvpButtonForExternalRegion">
+                <div>
                     <button *ngIf="!disableRsvp" mat-raised-button color="accent"
                         (click)="openRsvpDialog()">RSVP</button>
                     <!-- <button *ngIf="disableRsvp" mat-raised-button color="accent" (click)="openRsvpDialog()">RSVP</button> -->
                 </div>
-                <div class="display-grid" *ngIf="hideRsvpButtonForExternalRegion">
+                <div class="display-grid" *ngIf="disableRsvp">
                     <span *ngIf="disableRsvp" class="post-confirmation-message">Thank you for confirming</span>
                     <span *ngIf="disableRsvp" class="post-confirmation-message">your
                         RSVP.</span>

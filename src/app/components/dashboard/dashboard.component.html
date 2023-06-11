@@ -13,7 +13,7 @@
                 <div>
                     <mat-form-field class="example-full-width" appearance="outline">
                         <mat-label>PASSWORD:</mat-label>
-                        <input formControlName="password" matInput required>
+                        <input type="password" formControlName="password" matInput required>
                     </mat-form-field>
                 </div>
             </div>
@@ -27,6 +27,19 @@
             <mat-label>Filter</mat-label>
             <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
         </mat-form-field>
+        <div style="display: flex;">
+            <div>
+                <label id="example-radio-group-label">TABLE TYPE:</label>
+                <mat-radio-group aria-labelledby="example-radio-group-label" (change)="radioButtonValueChange($event)"
+                    class="example-radio-group" [(ngModel)]="trueCount">
+                    <mat-radio-button value="false">ALL RSVP</mat-radio-button>
+                    <mat-radio-button value="true">True Count</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div>
+                <div style="padding: 10px;">Total RSVP: {{count}}</div>
+            </div>
+        </div>
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
             <!--- Note that these columns can be defined in any order.

@@ -17,4 +17,10 @@ export class DashboardService {
     return this.http.post(url, {});
   }
 
+  getAllRsvp() {
+    let url: string = this.serviceUrl + 'allrsvp';
+
+    return this.http.get(url, {});
+  }
+
 }

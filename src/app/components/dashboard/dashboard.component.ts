@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { MockTableData } from './MockTableData';
 import { DashboardService } from 'src/app/services/dashboard.service';
+import { RsvpDto } from './RsvpDto';
+import { MatRadioChange } from '@angular/material/radio';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,10 +12,12 @@ import { DashboardService } from 'src/app/services/dashboard.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-
+  trueCount: boolean = true;
+  count!: number;
   loggedin: boolean = false;
   displayedColumns: string[] = ['Id', 'Name', 'Phone', 'GuestCount', 'Timezone', 'RSVPDATE', 'PartOfCount'];
-  dataSource = new MatTableDataSource(MockTableData);
+  dataSource: any = new MatTableDataSource();
+  rsvpRef!: RsvpDto[];
   contactForm = new FormGroup({
     userName: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required])
@@ -36,7 +40,18 @@ export class DashboardComponent {
       next: (data: any) => {
         console.log('DashboardComponent validateInfo success', data);
         if (data['valid'] == true) {
-          this.loggedin = true;
+          this.ds.getAllRsvp().subscribe({
+            next: (recs) => {
+              this.rsvpRef = recs as RsvpDto[];
+              this.dataSource = new MatTableDataSource(this.rsvpRef);
+              this.count = this.rsvpRef.length;
+              this.loggedin = true;
+            },
+            error: (e) => {
+              console.log('DashboardComponent getAllRsvp error', e);
+            }
+          })
+
         }
       },
       error: (e) => {
@@ -48,5 +63,25 @@ export class DashboardComponent {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  radioButtonValueChange(event: MatRadioChange) {
+    console.log('DashboardComponent radioButtonValueChange ', event);
+    if (event.value == 'true') {
+      console.log('DashboardComponent radioButtonValueChange if ', this.rsvpRef);
+      let onlyValidRSvps: RsvpDto[] = [];
+      this.rsvpRef.forEach((rsvp) => {
+        if (rsvp.includeRsvpInCountList) {
+          onlyValidRSvps.push(rsvp);
+        }
+      });
+      this.count = onlyValidRSvps.length;
+      this.dataSource = new MatTableDataSource(onlyValidRSvps);
+    } else {
+      console.log('DashboardComponent radioButtonValueChange else ', this.rsvpRef);
+      this.count = this.rsvpRef.length;
+      this.dataSource = new MatTableDataSource();
+      this.dataSource = new MatTableDataSource(this.rsvpRef);
+    }
   }
 }
