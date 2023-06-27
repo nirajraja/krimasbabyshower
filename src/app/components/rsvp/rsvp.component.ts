@@ -11,6 +11,7 @@ import { RsvpFormComponent } from './rsvp-form/rsvp-form.component';
 export class RsvpComponent implements OnInit {
   allowedRsvpRegion: string[] = ['AMERICA'];
   disableRsvp: boolean = false;
+  rsvpDatePassed: boolean = false;
   hideRsvpButtonForExternalRegion: boolean = false;
   constructor(public dialog: MatDialog, private rsvpService: RsvpService) {
   }
@@ -26,6 +27,23 @@ export class RsvpComponent implements OnInit {
     let continent: string = timezone.split('/')[0];
     console.log('RsvpComponent rsvp timezone: ', continent);
     this.hideRsvpButtonForExternalRegion = this.allowedRsvpRegion.includes(continent.toUpperCase()) ? true : false;
+    let d = new Date();
+    var g1 = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    // (YYYY, MM, DD) 
+    var g2 = new Date(2023, 7, 25);
+    console.log("g1", g1);
+    console.log("g2", g2);
+    if (g1.getTime() < g2.getTime()) {
+      console.log("g1 is lesser than g2");
+    }
+    else if (g1.getTime() > g2.getTime()) {
+      console.log("g1 is greater than g2");
+      this.rsvpDatePassed = true;
+    }
+    else {
+      this.rsvpDatePassed = true;
+      console.log("both are equal");
+    }
   }
 
   openRsvpDialog() {

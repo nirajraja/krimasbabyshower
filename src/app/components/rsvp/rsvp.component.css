@@ -71,3 +71,10 @@
   color: rgb(2, 252, 35);
   font-weight: bold;
 }
+
+.post-rsvp-end-message {
+  font-family: Roboto;
+  font-size: 18px;
+  color: rgb(252, 94, 2);
+  font-weight: bold;
+}

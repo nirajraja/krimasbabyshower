@@ -39,9 +39,15 @@
                     <span>Friday, August 25th, 2023</span>
                 </div>
                 <div>
-                    <button *ngIf="!disableRsvp" mat-raised-button color="accent"
+                    <button *ngIf="!disableRsvp" [disabled]="rsvpDatePassed" mat-raised-button color="accent"
                         (click)="openRsvpDialog()">RSVP</button>
                     <!-- <button *ngIf="disableRsvp" mat-raised-button color="accent" (click)="openRsvpDialog()">RSVP</button> -->
+
+                </div>
+                <div class="display-grid" *ngIf="rsvpDatePassed">
+                    <span class="post-rsvp-end-message">Please reach out to Mina at </span>
+                    <span class="post-rsvp-end-message">(571)-357-8911 to complete your RSVP.
+                    </span>
                 </div>
                 <div class="display-grid" *ngIf="disableRsvp">
                     <span *ngIf="disableRsvp" class="post-confirmation-message">Thank you for confirming</span>
