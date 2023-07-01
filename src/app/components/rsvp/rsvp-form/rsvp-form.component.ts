@@ -25,7 +25,7 @@ export interface RsvpInfo {
   styleUrls: ['./rsvp-form.component.css'],
 })
 export class RsvpFormComponent {
-
+  showSpinner: boolean = false;
   invalidForm: boolean = false;
   contactForm = new FormGroup({
     firstname: new FormControl('', [Validators.required]),
@@ -48,6 +48,7 @@ export class RsvpFormComponent {
     if (this.contactForm.invalid) {
       this.invalidForm = true;
     } else if (this.contactForm.valid) {
+      this.showSpinner = true;
       console.log('RsvpFormComponent rsvp info: ', this.getRsvpInfo());
       this.rsvpServce.postRsvp(this.getRsvpInfo()).subscribe({
         next: (data) => {
