@@ -14,6 +14,7 @@ import { MatRadioChange } from '@angular/material/radio';
 export class DashboardComponent {
   trueCount: boolean = true;
   count!: number;
+  guestCount: number = 0;
   loggedin: boolean = false;
   displayedColumns: string[] = ['Id', 'Name', 'Phone', 'GuestCount', 'Timezone', 'RSVPDATE', 'PartOfCount'];
   dataSource: any = new MatTableDataSource();
@@ -46,6 +47,7 @@ export class DashboardComponent {
               this.dataSource = new MatTableDataSource(this.rsvpRef);
               this.count = this.rsvpRef.length;
               this.loggedin = true;
+              this.countTotalGuests();
             },
             error: (e) => {
               console.log('DashboardComponent getAllRsvp error', e);
@@ -83,5 +85,13 @@ export class DashboardComponent {
       this.dataSource = new MatTableDataSource();
       this.dataSource = new MatTableDataSource(this.rsvpRef);
     }
+  }
+
+  countTotalGuests() {
+    this.rsvpRef.forEach((rsvp) => {
+      if (rsvp.includeRsvpInCountList == true) {
+        this.guestCount = this.guestCount + rsvp.guestCount;
+      }
+    })
   }
 }
