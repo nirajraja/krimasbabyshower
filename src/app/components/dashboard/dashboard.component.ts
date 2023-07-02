@@ -41,19 +41,7 @@ export class DashboardComponent {
       next: (data: any) => {
         console.log('DashboardComponent validateInfo success', data);
         if (data['valid'] == true) {
-          this.ds.getAllRsvp().subscribe({
-            next: (recs) => {
-              this.rsvpRef = recs as RsvpDto[];
-              this.dataSource = new MatTableDataSource(this.rsvpRef);
-              this.count = this.rsvpRef.length;
-              this.loggedin = true;
-              this.countTotalGuests();
-            },
-            error: (e) => {
-              console.log('DashboardComponent getAllRsvp error', e);
-            }
-          })
-
+          this.getAllrsvp();
         }
       },
       error: (e) => {
@@ -62,6 +50,21 @@ export class DashboardComponent {
     })
   }
 
+  getAllrsvp() {
+    this.guestCount = 0;
+    this.ds.getAllRsvp().subscribe({
+      next: (recs) => {
+        this.rsvpRef = recs as RsvpDto[];
+        this.dataSource = new MatTableDataSource(this.rsvpRef);
+        this.count = this.rsvpRef.length;
+        this.loggedin = true;
+        this.countTotalGuests();
+      },
+      error: (e) => {
+        console.log('DashboardComponent getAllRsvp error', e);
+      }
+    })
+  }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

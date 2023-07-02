@@ -27,6 +27,9 @@
             <mat-label>Filter</mat-label>
             <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
         </mat-form-field>
+        <div>
+            <button mat-raised-button class="margin-button" color="secondry" (click)="getAllrsvp()">Refresh</button>
+        </div>
         <div style="display: flex;">
             <div>
                 <label id="example-radio-group-label">TABLE TYPE:</label>
@@ -57,7 +60,7 @@
             <!-- Name Column -->
             <ng-container matColumnDef="Name">
                 <th mat-header-cell *matHeaderCellDef> Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.lastName}},{{element.firstName}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.lastName}}, {{element.firstName}} </td>
             </ng-container>
 
             <!-- Weight Column -->
